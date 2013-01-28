@@ -4,25 +4,25 @@
 # Read Baltimore Homicides Data File
 # -----------------------------------
 
-homicides <- readLines("./data/homicides.txt")
+homicides <- readLines("../data/homicides.txt")
 
 # Part 1: How many of each cause of homicide?
 # -------------------------------------------
 
 count <- function(cause = NULL) {
   ## Check that "cause" is non-NULL; else throw error
-  if (cause == NULL){
+  if (is.null(cause)){
     stop("The argument 'cause' must be non-NULL.")
   }
   
   ## Check that specific "cause" is allowed; else throw error
   allowable.causes <- c("asphyxiation", "blunt force", "other", "shooting", "stabbing", "unknown")
-  if (tolower(cause) %!in% allowable.causes){
+  if (!(tolower(cause) %in% allowable.causes)){
     stop("The value specified for 'cause' is not valid.")
   }
 
   ## Read "homicides.txt" data file
-  homicides <- readLines("./data/homicides.txt")
+  homicides <- readLines("../data/homicides.txt")
   
   ## Extract causes of death
   ## In homicides.txt, we want to extract the cause of death. The cause is listed in the file
